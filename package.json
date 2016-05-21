@@ -12,6 +12,7 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
+    "nwb": "^0.10.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
   },
