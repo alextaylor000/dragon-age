@@ -11,28 +11,33 @@ export class App extends React.Component {
   }
 
   handleButtonClick(e) {
-    console.log('handle button click')
-    console.log(this)
     this.setState({showPlayButton: false})
   }
 
-  hello(e) {
-    console.log('helo')
+  renderButton() {
+    if (this.state.showPlayButton) {
+      return (<Button handleClick={this.handleButtonClick} text="Play" />)
+    }
   }
 
-  renderButton() {
-    debugger
-    if (this.state.showPlayButton) {
-      return (<Button onClick={() => { console.log('hi') }} text="Play" />)
+  renderCurrentState() {
+    switch(this.state.mode) {
+      case 'start':
+        return renderButton()
+      case 'guess':
+        break
+      case 'finish':
+        break
+      default:
+        break
     }
   }
 
   render() {
-    const button = this.state.showPlayButton ? <Button handleClick={this.handleButtonClick} text="hey" /> : ''
     return (
       <div>
-        <h2 onClick={this.hello.bind(this)}>Welcome to Dragon Age</h2>
-        {button}
+        <h2>Welcome to Dragon Age</h2>
+        {this.renderButton()}
       </div>
     )
   }
