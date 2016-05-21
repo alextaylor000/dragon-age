@@ -1,9 +1,11 @@
 import React from 'react'
 import {Button} from 'components/Button'
 import {Card} from 'components/Card'
+import {GameOver} from 'components/GameOver'
 
 const DRAGONS = [
-  { name: 'dragon1', age: 34 }
+  { name: 'dragon1', age: 34 },
+  { name: 'dragon2', age: 450 }
 ]
 
 export class App extends React.Component {
@@ -11,13 +13,16 @@ export class App extends React.Component {
     super(props)
     this.state = {
       mode: 'start',
-      showPlayButton: true
+      showPlayButton: true,
+      round: 0,
+      numCorrect: 0
     }
 
     this.handleButtonClick = this.handleButtonClick.bind(this)
     this.renderButton = this.renderButton.bind(this)
     this.renderCard = this.renderCard.bind(this)
     this.handleGuess = this.handleGuess.bind(this)
+    this.getMode = this.getMode.bind(this)
   }
 
   handleButtonClick(e) {
@@ -28,7 +33,17 @@ export class App extends React.Component {
   }
 
   handleGuess(guess) {
-    console.log(`Your guess was ${guess.target.value}`)
+    let thisRound = guess ? 1 : 0
+    this.setState({
+      numCorrect: this.state.numCorrect + thisRound,
+      round: ++this.state.round,
+      mode: this.getMode()
+    })
+  }
+
+  getMode() {
+    if (DRAGONS.length === 0) return 'finish'
+    return this.state.mode
   }
 
   renderButton() {
@@ -38,7 +53,8 @@ export class App extends React.Component {
   }
 
   renderCard() {
-    return (<Card dragon={DRAGONS[0]} onGuess={this.handleGuess} />)
+    const thisDragon = DRAGONS.pop()
+    return (<Card dragon={thisDragon} onGuess={this.handleGuess} />)
   }
 
   renderCurrentState() {
@@ -50,6 +66,7 @@ export class App extends React.Component {
         return this.renderCard()
         break
       case 'finish':
+        return <GameOver />
         break
       default:
         break
