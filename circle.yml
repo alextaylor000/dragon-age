@@ -1,5 +1,5 @@
 deployment:
   production:
     branch: master
-    commands:
-      - git push git@heroku.com:dragon-age.git $CIRCLE_SHA1:master
+    heroku:
+      appname: dragon-age
