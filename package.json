@@ -1,26 +1,24 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
-  "engines": {
-    "node": "5.9.1"
-  },
-  "main": "index.js",
+  "name": "dragon_age",
+  "version": "1.0.0",
+  "description": "Describe dragon_age here",
+  "private": true,
   "scripts": {
-    "start": "node index.js"
+    "build": "nwb build-react-app",
+    "clean": "nwb clean-app",
+    "start": "nwb serve-react-app",
+    "test": "nwb test",
+    "test:watch": "nwb test --server",
+    "postinstall": "npm run build"
   },
   "dependencies": {
-    "ejs": "2.4.1",
-    "express": "4.13.3"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+  "devDependencies": {
+    "nwb": "0.10.x"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+  "author": "",
+  "license": "MIT",
+  "repository": ""
 }
