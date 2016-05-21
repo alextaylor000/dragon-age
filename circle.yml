@@ -1,3 +1,6 @@
+machine:
+  node:
+    version: 5.9.1
 deployment:
   production:
     branch: master
