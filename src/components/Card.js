@@ -15,15 +15,20 @@ export class Card extends React.Component {
   render() {
     const ages = shuffle([this.props.dragon.age, randomAge(), randomAge()])
     const renderGuesses = () => {
-      return (<ul>
-                {ages.map((age) => <li onClick={this.verifyGuess} key={age} value={age}>{age.toLocaleString()} years old</li>)}
-              </ul>)
+      return (<div>
+                {ages.map((age) => <span key={age} style={{margin: '25px', backgroundColor: 'yellow', border: '2px solid white', padding: '30px', cursor: 'pointer'}} onClick={this.verifyGuess} value={age}><a href='#'>{age.toLocaleString()} years old</a></span>)}
+              </div>)
+    }
+
+    const imgContainerStyle = {
+      border: '3px dashed red',
+      minHeight: '325px'
     }
 
     return (
       <div class="dragon-card">
-        <h3>GUESS TEH AGE</h3>
-        <p><img src={`/images/${this.props.dragon.image}`} /></p>
+        <h1><img src="/images/bigfire.gif" width="75"/>GUESS TEH DRAGOn AGE<img src="/images/bigfire.gif" width="75"/></h1>
+        <div style={imgContainerStyle}><img src={`/images/${this.props.dragon.image}`} /></div>
         {renderGuesses()}
       </div>
     )

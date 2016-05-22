@@ -1,6 +1,6 @@
 import React from 'react'
 import {selectDragons} from 'utils/selectDragons'
-import {Button} from 'components/Button'
+import {Intro} from 'components/Intro'
 import {Card} from 'components/Card'
 import {GameOver} from 'components/GameOver'
 import DRAGONS from 'data/dragons'
@@ -13,7 +13,6 @@ export class App extends React.Component {
     this.state = this.initialState()
 
     this.handleButtonClick = this.handleButtonClick.bind(this)
-    this.renderStart = this.renderStart.bind(this)
     this.renderCard = this.renderCard.bind(this)
     this.handleGuess = this.handleGuess.bind(this)
     this.getMode = this.getMode.bind(this)
@@ -51,15 +50,6 @@ export class App extends React.Component {
     return this.state.mode
   }
 
-  renderStart() {
-    return (
-      <div>
-        <h1>dRÅgĘń aGe :: inQŪĮŽîshuñ</h1>
-        <Button handleClick={this.handleButtonClick} text="<< PLAY >>" />
-      </div>
-    )
-  }
-
   renderCard() {
     const thisDragon = this.state.dragons[this.state.round]
     return (<Card dragon={thisDragon} onGuess={this.handleGuess} />)
@@ -68,7 +58,7 @@ export class App extends React.Component {
   renderCurrentState() {
     switch(this.state.mode) {
       case 'start':
-        return this.renderStart()
+        return (<Intro onClick={this.handleButtonClick} />)
         break
       case 'play':
         return this.renderCard()
@@ -87,7 +77,7 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div rowpadding={2}>
         {this.renderCurrentState()}
       </div>
     )
