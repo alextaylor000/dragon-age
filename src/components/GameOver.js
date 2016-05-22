@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const GameOver = ({rounds, numCorrect}) => {
+export const GameOver = ({onReset, rounds, numCorrect}) => {
   const resultMessage = (rounds, numCorrect) => {
     const pct = numCorrect / rounds
     if (pct >= 0.85) {
@@ -30,6 +30,8 @@ export const GameOver = ({rounds, numCorrect}) => {
       <h1>GAME OVER</h1>
       <h2>{resultMessage(rounds, numCorrect)}</h2>
       {resultSummary(rounds, numCorrect)}
+      <hr />
+      <a onClick={onReset}>PLAY AGAIN</a>
     </div>
   )
 }

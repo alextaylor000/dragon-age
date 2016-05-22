@@ -19,19 +19,23 @@ const NUM_ROUNDS = 3
 export class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = this.initialState()
+    this.handleButtonClick = this.handleButtonClick.bind(this)
+    this.renderButton = this.renderButton.bind(this)
+    this.renderCard = this.renderCard.bind(this)
+    this.handleGuess = this.handleGuess.bind(this)
+    this.getMode = this.getMode.bind(this)
+    this.handleReset = this.handleReset.bind(this)
+  }
+
+  initialState() {
+    return {
       mode: 'start',
       showPlayButton: true,
       round: 0,
       numCorrect: 0,
       dragons: selectDragons(DRAGONS, NUM_ROUNDS)
     }
-
-    this.handleButtonClick = this.handleButtonClick.bind(this)
-    this.renderButton = this.renderButton.bind(this)
-    this.renderCard = this.renderCard.bind(this)
-    this.handleGuess = this.handleGuess.bind(this)
-    this.getMode = this.getMode.bind(this)
   }
 
   handleButtonClick(e) {
@@ -75,11 +79,15 @@ export class App extends React.Component {
         return this.renderCard()
         break
       case 'finish':
-        return <GameOver rounds={NUM_ROUNDS} numCorrect={this.state.numCorrect} />
+        return <GameOver onReset={this.handleReset} rounds={NUM_ROUNDS} numCorrect={this.state.numCorrect} />
         break
       default:
         break
     }
+  }
+
+  handleReset() {
+    this.setState(this.initialState())
   }
 
   render() {
