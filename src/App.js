@@ -1,12 +1,20 @@
 import React from 'react'
+import {selectDragons} from 'utils/selectDragons'
 import {Button} from 'components/Button'
 import {Card} from 'components/Card'
 import {GameOver} from 'components/GameOver'
 
 const DRAGONS = [
   { name: 'dragon1', age: 34 },
-  { name: 'dragon2', age: 450 }
+  { name: 'dragon2', age: 450 },
+  { name: 'dragon3', age: 203 },
+  { name: 'dragon4', age: 87 },
+  { name: 'dragon5', age: 45 },
+  { name: 'dragon6', age: 91 },
+  { name: 'dragon7', age: 1000 }
 ]
+
+const NUM_ROUNDS = 3
 
 export class App extends React.Component {
   constructor(props) {
@@ -15,7 +23,8 @@ export class App extends React.Component {
       mode: 'start',
       showPlayButton: true,
       round: 0,
-      numCorrect: 0
+      numCorrect: 0,
+      dragons: selectDragons(DRAGONS, NUM_ROUNDS)
     }
 
     this.handleButtonClick = this.handleButtonClick.bind(this)
@@ -42,7 +51,7 @@ export class App extends React.Component {
   }
 
   getMode() {
-    if (DRAGONS.length === 0) return 'finish'
+    if (this.state.round === NUM_ROUNDS) return 'finish'
     return this.state.mode
   }
 
@@ -53,7 +62,7 @@ export class App extends React.Component {
   }
 
   renderCard() {
-    const thisDragon = DRAGONS.pop()
+    const thisDragon = this.state.dragons[this.state.round]
     return (<Card dragon={thisDragon} onGuess={this.handleGuess} />)
   }
 
