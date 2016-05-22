@@ -75,7 +75,7 @@ export class App extends React.Component {
         return this.renderCard()
         break
       case 'finish':
-        return <GameOver />
+        return <GameOver rounds={NUM_ROUNDS} numCorrect={this.state.numCorrect} />
         break
       default:
         break
