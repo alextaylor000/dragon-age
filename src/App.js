@@ -3,16 +3,7 @@ import {selectDragons} from 'utils/selectDragons'
 import {Button} from 'components/Button'
 import {Card} from 'components/Card'
 import {GameOver} from 'components/GameOver'
-
-const DRAGONS = [
-  { name: 'dragon1', age: 34 },
-  { name: 'dragon2', age: 450 },
-  { name: 'dragon3', age: 203 },
-  { name: 'dragon4', age: 87 },
-  { name: 'dragon5', age: 45 },
-  { name: 'dragon6', age: 91 },
-  { name: 'dragon7', age: 1000 }
-]
+import DRAGONS from 'data/dragons'
 
 const NUM_ROUNDS = 3
 
@@ -20,8 +11,9 @@ export class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = this.initialState()
+
     this.handleButtonClick = this.handleButtonClick.bind(this)
-    this.renderButton = this.renderButton.bind(this)
+    this.renderStart = this.renderStart.bind(this)
     this.renderCard = this.renderCard.bind(this)
     this.handleGuess = this.handleGuess.bind(this)
     this.getMode = this.getMode.bind(this)
@@ -59,10 +51,13 @@ export class App extends React.Component {
     return this.state.mode
   }
 
-  renderButton() {
-    if (this.state.showPlayButton) {
-      return (<Button handleClick={this.handleButtonClick} text="Play" />)
-    }
+  renderStart() {
+    return (
+      <div>
+        <h1>dRÅgĘń aGe :: inQŪĮŽîshuñ</h1>
+        <Button handleClick={this.handleButtonClick} text="<< PLAY >>" />
+      </div>
+    )
   }
 
   renderCard() {
@@ -73,7 +68,7 @@ export class App extends React.Component {
   renderCurrentState() {
     switch(this.state.mode) {
       case 'start':
-        return this.renderButton()
+        return this.renderStart()
         break
       case 'play':
         return this.renderCard()
@@ -93,7 +88,6 @@ export class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>Welcome to Dragon Age</h2>
         {this.renderCurrentState()}
       </div>
     )

@@ -22,8 +22,8 @@ export class Card extends React.Component {
 
     return (
       <div class="dragon-card">
-        <h3>How old is this dragon?</h3>
-        <p>{this.props.dragon.name}</p>
+        <h3>GUESS TEH AGE</h3>
+        <p><img src={`/images/${this.props.dragon.image}`} /></p>
         {renderGuesses()}
       </div>
     )

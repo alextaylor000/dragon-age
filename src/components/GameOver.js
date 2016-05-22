@@ -31,7 +31,7 @@ export const GameOver = ({onReset, rounds, numCorrect}) => {
       <h2>{resultMessage(rounds, numCorrect)}</h2>
       {resultSummary(rounds, numCorrect)}
       <hr />
-      <a onClick={onReset}>PLAY AGAIN</a>
+      <a href='#' onClick={onReset}>PLAY AGAIN</a>
     </div>
   )
 }
