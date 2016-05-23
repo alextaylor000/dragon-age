@@ -1,4 +1,5 @@
 import React from 'react'
+import {GuessButton} from 'components/GuessButton'
 import {shuffle} from 'lodash/collection'
 import {randomAge} from 'utils/randomAge'
 
@@ -13,13 +14,7 @@ export class Card extends React.Component {
   }
 
   render() {
-    const ages = shuffle([this.props.dragon.age, randomAge(), randomAge()])
-    const renderGuesses = () => {
-      return (<div>
-                {ages.map((age) => <span key={age} style={{margin: '25px', backgroundColor: 'yellow', border: '2px solid white', padding: '30px', cursor: 'pointer'}} onClick={this.verifyGuess} value={age}><a href='#'>{age.toLocaleString()} years old</a></span>)}
-              </div>)
-    }
-
+    const guesses = shuffle([this.props.dragon.age, randomAge(), randomAge()])
     const imgContainerStyle = {
       border: '3px dashed red',
       minHeight: '325px'
@@ -29,7 +24,7 @@ export class Card extends React.Component {
       <div class="dragon-card">
         <h1><img src="/images/bigfire.gif" width="75"/>GUESS TEH DRAGOn AGE<img src="/images/bigfire.gif" width="75"/></h1>
         <div style={imgContainerStyle}><img src={`/images/${this.props.dragon.image}`} /></div>
-        {renderGuesses()}
+        {guesses.map((age) => { return <GuessButton age={age} key={age} onClick={this.verifyGuess} />})}
       </div>
     )
   }

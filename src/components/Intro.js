@@ -5,8 +5,11 @@ export const Intro = ({onClick}) => {
   return (
     <div>
       <img src='/images/flamingline.gif' />
-      <h1>dRÅgĘń aGe :: inQŪĮŽîshuñ</h1>
+      <h1>dRAgOn aGe :: inQUIZition</h1>
       <hr />
+      <img src='/images/dragon4.gif' />
+      <img src='/images/dragon4.gif' />
+      <img src='/images/dragon4.gif' />
       <Button handleClick={onClick} text="<< PLAY >>" />
       <hr />
       <img src='/images/flamingline.gif' />
