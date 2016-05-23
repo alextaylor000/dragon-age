@@ -15,6 +15,8 @@ export const Intro = ({onClick}) => {
       <img src='/images/flamingline.gif' />
       <br />
       ~~ another stunning site by <a href='https://twitter.com/mctaylorpants'>@mctaylorpants</a> ~~
+      <br />
+      <a href='https://github.com/alextaylor000/dragon-age'>view the source</a>
     </div>
   )
 }
