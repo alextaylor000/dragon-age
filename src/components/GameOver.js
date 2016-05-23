@@ -34,8 +34,8 @@ export const GameOver = ({onReset, rounds, numCorrect}) => {
       <h1>GAME OVER</h1>
       {resultSummary(rounds, numCorrect)}
       <hr />
-      <img src='/images/DRAGON.gif'/>
-      <img src='/images/DRAGON.gif'/>
+      <img src='/images/DRAGON.GIF'/>
+      <img src='/images/DRAGON.GIF'/>
       <Button handleClick={onReset} text="<< PLAY AGAIN >>" />
     </div>
   )
