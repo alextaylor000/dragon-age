@@ -31,6 +31,7 @@ export class Card extends React.Component {
     return (
       <div class="dragon-card">
         <h1><img src="/images/bigfire.gif" width="75"/>GUESS TEH DRAGOn AGE<img src="/images/bigfire.gif" width="75"/></h1>
+        <p style={{clear: 'both'}}><a href={this.props.dragon.url} target='new'>where this dragon from???1</a></p>
         <div style={imgContainerStyle}>
           <img onLoad={() => this.setState({ imageLoaded: true})} src={`/images/${this.props.dragon.image}`} />
         </div>
