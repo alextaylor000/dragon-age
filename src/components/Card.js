@@ -11,14 +11,14 @@ export class Card extends React.Component {
     this.renderGuesses = this.renderGuesses.bind(this)
   }
 
-  verifyGuess(guess) {
-    this.props.onGuess(guess.target.value == this.props.dragon.age)
+  verifyGuess(age) {
+    this.props.onGuess(age == this.props.dragon.age)
   }
 
   renderGuesses() {
     const guesses = shuffle([this.props.dragon.age, randomAge(), randomAge()])
     if (this.state.imageLoaded) {
-      return guesses.map((age) => { return <GuessButton age={age} key={age} onClick={this.verifyGuess} />})
+      return guesses.map((age) => { return <GuessButton age={age} key={age} onClick={() => this.verifyGuess(age)} />})
     }
   }
 
